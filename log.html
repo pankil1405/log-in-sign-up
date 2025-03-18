@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login Form</title>
+    <link rel="stylesheet" href="log.css">
+    
+</head>
+<body>
+    <div class="main">
+        <img src="img/background.jpg" alt="img1">
+    </div>
+    <div class="f123">
+          
+    </div>
+    <div class="form1">
+
+        <img src="img/Form-img.jpg" alt="">
+        <h1> </h1>
+        
+    </div>
+        <div class="form">
+            <h2>Login : </h2>
+
+            <form class="mainform" id="myForm">
+        
+            <input type="text" class="input1" id="name" placeholder="Enter your name"  >
+            <p id="nameError" class="error"></p>
+            <input type="email" class="input1" id="email" placeholder="Enter your email" >
+            <p id="emailError" class="error"></p>
+            <input type="password" class="input1" id="password" placeholder="Enter your password"  pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+[\]{}|;:'\">
+            <p id="passwordError" class="error"></p>
+        <a href="forget.html" class="forpass">Forget Your Password</a>
+        <input type="submit"  value="Login " id="btn1" class="btn1">
+
+    </form>
+        </div>
+
+
+<div class="left-reg">
+    <p class="p1">Not have an account yet!</p>
+    <a href="reg.html" class="linklog">  Register Now</a>
+</div>
+<script> 
+ document.getElementById("myForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var nameInput = document.getElementById("name").value;
+            var emailInput = document.getElementById("email").value;
+            var passwordInput = document.getElementById("password").value;
+            
+            var nameError = document.getElementById("nameError");
+            var emailError = document.getElementById("emailError");
+            var passwordError = document.getElementById("passwordError");
+
+            document.getElementById("myForm").reset();
+            
+            nameError.textContent = "";
+            emailError.textContent = "";
+            passwordError.textContent = "";
+            
+            if (nameInput.trim() === "") {
+                nameError.textContent = "Name field cannot be empty!";
+            }
+            if (emailInput.trim() === "") {
+                emailError.textContent = "Email field cannot be empty!";
+            }
+            if (passwordInput.trim() === "") {
+                passwordError.textContent = "Password field cannot be empty!";
+            }
+            
+            if (nameInput.trim() !== "" && emailInput.trim() !== "" && passwordInput.trim() !== "") {
+                alert("Login successfully!"); 
+                window.location.href = "last.html";
+            }
+
+            var existingData = JSON.parse(sessionStorage.getItem("userData")) || [];
+
+            var newData = {
+                fullName: nameInput,
+                email: emailInput,
+                password: passwordInput,
+            };
+
+            existingData.push(newData);
+
+            sessionStorage.setItem("userData", JSON.stringify(existingData));
+
+            document.getElementById("myForm").reset();
+                
+          
+                });
+
+                
+</script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forget password</title>
+    <link rel="stylesheet" href="forget.css">
+    
+</head>
+<body>
+    <div class="main">
+        <img src="img/background.jpg" alt="img1">
+    </div>
+    <div class="f123">
+          
+    </div>
+    <div class="form1">
+
+        <img src="img/Form-img.jpg" alt="">
+        <h1> </h1>
+        
+    </div>
+  <div class="form">
+    <h2>Reset Your Password : </h2>
+
+    <form class="mainform" id="myForm">
+        
+        <input type="text" class="input1" id="name" placeholder="Enter your name"  >
+        <p id="nameError" class="error"></p>
+ 
+        <input type="text" class="input1" id="email" placeholder="Enter your email" > 
+        <p id="emailError" class="error"></p>
+ 
+        <input type="tel" id="phone"  class="input1" name="phone" placeholder="Enter your number">
+        <p id="phoneError" class="error"></p>
+        
+        <input type="address" id="address" class="input1" placeholder="Enter your address" > 
+        <p id="addressError" class="error"></p>
+
+        <input type="date" id="dob" class="input1" >
+        <p id="dobError" class="error"></p>
+        
+         <input type="password" id="pass" class="input1" placeholder="Enter your password" >
+         <p id="passwordError" class="error"></p>
+         
+         <input type="password" id="cpass" class="input1" placeholder="Confirm password" >
+         <p id="cpasswordError" class="error"></p>
+ 
+         <div class="check12">
+         <input type="checkbox" name="check" class="check1"id="checkbox">
+         <label for="checkbox" class="check1">I accept all terms & conditions</label>
+         </div>
+ 
+         <input type="submit"  value="Reset Password" id="btn1" class="btn1" >
+ 
+     </form>
+
+</div>
+<div class="left-reg">
+    <p class="p1">Already Have an account?</p>
+    <a href="log.html" class="linklog">Login Now</a>
+</div>
+
+<script>
+    document.getElementById("myForm").addEventListener("submit", function (event) {
+    event.preventDefault(); 
+    
+    var nameInput = document.getElementById("name").value.trim();
+    var emailInput = document.getElementById("email").value.trim();
+    var phoneInput = document.getElementById("phone").value.trim();
+    var dobInput = document.getElementById("dob").value.trim();
+    var addressInput = document.getElementById("address").value.trim();
+    var passwordInput = document.getElementById("pass").value.trim();
+    var cpasswordInput = document.getElementById("cpass").value.trim();
+
+    var nameError = document.getElementById("nameError");
+    var emailError = document.getElementById("emailError");
+    var phoneError = document.getElementById("phoneError");    
+    var dobError = document.getElementById("dobError");
+    var addressError = document.getElementById("addressError");
+    var passwordError = document.getElementById("passwordError");
+    var cpasswordError = document.getElementById("cpasswordError");
+
+    // Reset error messages
+    nameError.textContent = "";
+    emailError.textContent = "";
+    phoneError.textContent = "";
+    dobError.textContent = "";
+    addressError.textContent = "";
+    passwordError.textContent = "";
+    cpasswordError.textContent = "";
+
+    // Form validation
+    if (nameInput === "") nameError.textContent = "Name field cannot be empty!";
+    if (emailInput === "") emailError.textContent = "Email field cannot be empty!";
+    if (phoneInput === "") phoneError.textContent = "Phone field cannot be empty!";
+    if (dobInput === "") dobError.textContent = "This field cannot be empty!";
+    if (addressInput === "") addressError.textContent = "Address field cannot be empty!";
+    if (passwordInput === "") passwordError.textContent = "Password field cannot be empty!";
+    if (cpasswordInput === "") cpasswordError.textContent = "Confirm Password field cannot be empty!";
+    if (passwordInput !== cpasswordInput) {
+        cpasswordError.textContent = "Passwords do not match!";
+        return;
+    }
+
+    if (nameInput && emailInput && phoneInput && dobInput && addressInput && passwordInput && cpasswordInput) {
+        alert("Password Reset successfully!"); 
+    }
+
+    let existingData = JSON.parse(sessionStorage.getItem("userData")) || [];
+
+    let newData = {
+        fullName: nameInput,
+        email: emailInput,
+        phoneNumber: phoneInput,
+        dob: dobInput,
+        address: addressInput,
+        password: passwordInput,
+        timestamp: new Date().toISOString() 
+    };
+
+    existingData.push(newData);
+
+    sessionStorage.setItem("userData", JSON.stringify(existingData));
+
+    document.getElementById("myForm").reset();
+});
+
+</script>
+</body>
+</html>

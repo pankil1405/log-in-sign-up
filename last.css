@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main img{
+    height: 100%;
+    width: 100%;
+}
+
+.f123{
+    height: 400px;
+    width: 1050px;
+    margin-top: -700px;
+    box-shadow: 1px 1px 1px 1px ;
+    background-color: rgb(225, 222, 217);
+    margin-left: 450px;
+    position: relative;
+}
+
+.form1{
+    height: 500px;
+    width: 550px;
+    border: 1px solid black;
+    position: relative;
+    margin-top: -420px;
+    margin-left: 830px;
+    box-shadow: 1px 2px 3px 3px ;
+    
+}
+.form1 img{
+    height: 100%;
+    width: 100%;
+}
+
+.form{
+    margin-top: -480px;
+    margin-left: 875px;
+    position: relative;
+    font-family: sans-serif;
+    text-decoration: 1px underline;
+}
+
+.mainform{
+    height: 400px;
+    width: 430px;
+    margin-left: 15px;
+    margin-top: 10px;
+    border: px solid black;
+    box-shadow: 1px 2px 3px 3px ;
+    text-decoration: none;
+}
+
+.input1{
+    height: 40px;
+    width: 400px;
+    margin-top: 20px;
+    margin-left: 13px;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+}
+.input1:hover{
+    border: 1px solid black;
+}
+
+::placeholder{
+    font-size: larger;
+    align-items: end;
+    text-align: center;
+}
+::spelling-error {
+    text-decoration: underline wavy red;
+
+  }
+
+.check12{
+    margin-top: 40px;
+    margin-left: 30px;
+}
+
+.mainform .btn1{
+    background-color: transparent;
+    height: 50px;
+    width: 250px;
+    margin-left: 90px;
+    margin-top: -30px;
+    border-radius: 20px;
+    font-size: 25px;
+}
+
+.p1{
+    margin-top: 120px;
+    margin-left: 80px;
+    position: absolute;
+    font-size: 30px;
+}
+
+.linklog{
+    font-size: 30px;
+    text-decoration: none;
+    border: 1px solid black;
+    padding: 10px;
+    margin-top: 200px;
+    margin-left: 120px;
+    color: black;
+    position: absolute;
+}
+.linklog:hover{
+    text-decoration: underline;
+    color: red;
+}
+
+.forpass{
+    margin-left: 135px;
+
+        line-height: 100px;
+}
+
+.error {
+    color: red;
+    margin-top: 5px;
+    margin-left: 13px;
+    text-decoration: none;
+}
+
+.h2{
+    margin-left: 160px;
+}
+    
+.mainform{
+    align-items: center;
+    justify-items: center;
+    line-height: 50px;
+    text-decoration: none;
+
+}
