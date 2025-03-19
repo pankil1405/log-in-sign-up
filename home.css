@@ -1,0 +1,115 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main img{
+ height: auto;
+ width: 100%;
+}
+ table {
+     position: absolute;
+     width: 50%;
+     border-collapse: collapse; 
+     /* margin: 20px auto; */
+     margin-top: -800PX;
+     margin-left: 700px;
+ }
+ 
+ table, th, td {
+     border: 2px solid black; 
+ }
+ 
+ th, td {
+     /* padding: 10px;  */
+     text-align: center; 
+ }
+ 
+ th {
+     background-color: #f2f2f2; 
+     font-weight: bold;
+ }
+ 
+ td {
+     background-color: #f9f9f9; 
+ }
+ 
+ tr:nth-child(even) {
+     background-color: #f2f2f2; 
+ }
+ 
+ tr:hover {
+     background-color: #e0e0e0;
+ }
+ h2{
+     margin-top: -850PX;
+     margin-left: 950px;
+     position: absolute;
+ }
+
+ .reg{
+    margin-top: -450px;
+    width: 200px;
+    margin-left: 450px;
+    text-align: center;
+    position: absolute;
+    border: 2px solid black;
+    padding: 10px;
+}
+.reg2{
+    margin-top: -390px;
+    margin-left: 450px;
+    text-align: center;
+    width: 200px;
+    position: absolute;
+    border: 2px solid black;
+    padding: 10px;
+     }
+ .reg a{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+ }
+ .reg2 a{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+ }
+
+ .reg:hover{
+    background-color: #dadad5;
+   
+ }
+ 
+ button {
+     position: relative;
+     padding: 20px;
+     font-size: 18px;
+     cursor: pointer;
+     border: none;
+     background: transparent;
+     font-family: Arial, sans-serif;
+ }
+
+ button::after {
+     content: "";
+     position: absolute;
+     opacity: 0;
+     transition: opacity 0.3s ease;
+     font-size: 14px;
+     color: black;
+     margin-left: 8px;
+ }
+
+ .edit-button::after {
+     content: "Edit";
+ }
+
+ .delete-button::after {
+     content: "Delete";
+ }
+
+ button:hover::after {
+     opacity: 1;
+ }

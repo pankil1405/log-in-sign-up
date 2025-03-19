@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details Page</title>
+    <link rel="stylesheet" href="home.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="main">
+        <img src="img/background.jpg" alt="img1">
+    </div>
+    
+    <div class="form">
+        <h2>User Registration Details:</h2>
+        <table id="sessionStorageTable">
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>D-O-B</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <div class="reg">
+            <a href="reg.html">Back To Registration</a>
+        </div>
+        <div class="reg2">
+            <a href="log.html">Back To Login</a>
+        </div>
+    </div>
+
+    <script>
+        function populateTable() {
+            var existingData = JSON.parse(sessionStorage.getItem("userData")) || [];
+            var tbody = document.querySelector('#sessionStorageTable tbody');
+            
+            existingData.forEach((user, index) => {
+                var row = document.createElement('tr');
+
+                var fullNameCell = document.createElement('td');
+                var emailCell = document.createElement('td');
+                var phoneNumberCell = document.createElement('td');
+                var addressCell = document.createElement('td');
+                var dobCell = document.createElement('td');
+                var actionCell = document.createElement('td');
+
+                fullNameCell.textContent = user.fullName;
+                emailCell.textContent = user.email;
+                phoneNumberCell.textContent = user.phoneNumber;
+                addressCell.textContent = user.address;
+                dobCell.textContent = user.dob;
+
+                var editButton = document.createElement('button');
+                editButton.classList.add('edit-button'); 
+                editButton.innerHTML = '<i class="fas fa-pencil-alt"></i>';  
+                editButton.onclick = function () {
+                    editUser(index);
+                };
+
+                var deleteButton = document.createElement('button');
+                deleteButton.classList.add('delete-button'); 
+                deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';  
+                deleteButton.onclick = function () {
+                    deleteUser(index);
+                };
+
+                actionCell.appendChild(editButton);
+                actionCell.appendChild(deleteButton);
+
+                row.appendChild(fullNameCell);
+                row.appendChild(emailCell);
+                row.appendChild(phoneNumberCell);
+                row.appendChild(addressCell);
+                row.appendChild(dobCell);
+                row.appendChild(actionCell);
+
+                tbody.appendChild(row);
+            });
+        }
+
+        function editUser(index) {
+            var existingData = JSON.parse(sessionStorage.getItem("userData")) || [];
+            var user = existingData[index];
+
+            var newFullName = prompt("Edit Full Name:", user.fullName);
+            var newEmail = prompt("Edit Email:", user.email);
+            var newphoneNumber = prompt("Edit phoneNumber:", user.phoneNumber);
+            var newaddress = prompt("Edit address:", user.address);
+            var newdob = prompt("Edit DOB:", user.dob);
+
+            if (newFullName && newEmail && newphoneNumber && newaddress && newdob) {
+                user.fullName = newFullName;
+                user.email = newEmail;
+                user.phoneNumber = newphoneNumber;
+                user.address = newaddress;
+                user.dob = newdob;
+
+                existingData[index] = user;
+                sessionStorage.setItem("userData", JSON.stringify(existingData));
+
+                document.querySelector('#sessionStorageTable tbody').innerHTML = '';
+                populateTable();
+            }
+        }
+
+        function deleteUser(index) {
+            var existingData = JSON.parse(sessionStorage.getItem("userData")) || [];
+            
+            existingData.splice(index, 1);
+
+            sessionStorage.setItem("userData", JSON.stringify(existingData));
+
+            document.querySelector('#sessionStorageTable tbody').innerHTML = '';
+            populateTable();
+        }
+
+        window.onload = populateTable;
+    </script>
+</body>
+</html>
